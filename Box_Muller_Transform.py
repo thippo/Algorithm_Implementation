@@ -14,5 +14,5 @@ class Box_Muller_Transform():
         return self.mean+(Z*self.sd)
 
 if __name__=='__main__':
-    sampling=box_muller_transform(2,3)
+    sampling=Box_Muller_Transform(2,3)
     print(sampling())

@@ -38,6 +38,6 @@ if __name__=='__main__':
         return 0.3*np.exp(-0.2*x**2)+0.7*np.exp(-0.2*(x-10)**2)
     def sampling_function(x):
         return 0.8
-    a=rejection_sampling(target_function,sampling_function,(-6,20))
+    a=Rejection_Sampling(target_function,sampling_function,(-6,20))
     print(a())
     a.sampling_array(sampling_times=10000)

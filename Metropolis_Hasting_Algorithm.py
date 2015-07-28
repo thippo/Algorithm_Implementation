@@ -44,5 +44,5 @@ if __name__=='__main__':
     import random
     def p(x):
         return float(0.3*math.exp(-0.2*x**2)+0.7*math.exp(-0.2*(x-10)**2))
-    a=metropolis_hasting_algorithm(p,sampling_interval=(-50,50))
+    a=Metropolis_Hasting_Algorithm(p,sampling_interval=(-50,50))
     a.sampling_list(sampling_times=10000)
