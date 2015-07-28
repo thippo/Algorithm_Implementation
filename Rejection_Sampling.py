@@ -1,7 +1,7 @@
 #writen by thippo
 #python version 3.4.3
 
-class rejection_sampling():
+class Rejection_Sampling():
 
     import random
     import numpy as np

@@ -1,7 +1,7 @@
 #writen by thippo
 #python version 3.4.3
 
-class box_muller_transform():
+class Box_Muller_Transform():
     import random
     import math
     def __init__(self,mean=0,sd=1):

@@ -1,7 +1,7 @@
 #writen by thippo
 #python version 3.4.3
 
-class metropolis_hasting_algorithm():
+class Metropolis_Hasting_Algorithm():
     import math
     import random
     import numpy as np
