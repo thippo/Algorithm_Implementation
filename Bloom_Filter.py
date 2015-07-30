@@ -1,3 +1,7 @@
+#writen by thippo
+#python version 3.4.3
+#reference http://blog.csdn.net/demon24/article/details/8537665
+
 import BitVector
 
 class SimpleHash():  
