@@ -18,24 +18,24 @@ class SimpleHash():
 
 class BloomFilter():
     
-    def __init__(self, BIT_SIZE=1<<25):
-        self.BIT_SIZE = 1 << 25
-        self.seeds = [5, 7, 11, 13, 31, 37, 61]
-        self.bitset = BitVector.BitVector(size=self.BIT_SIZE)
-        self.hashFunc = []
+    def __init__(self,bit_size=25,hash_count=7):
+        self.bit_size = 1 << bit_size
+        self.seeds = list(range(hash_count))
+        self.bitset = BitVector.BitVector(size=self.bit_size)
+        self.hashfunction = []
         
         for i in range(len(self.seeds)):
-            self.hashFunc.append(SimpleHash(self.BIT_SIZE, self.seeds[i]))
+            self.hashfunction.append(SimpleHash(self.bit_size, self.seeds[i]))
         
     def insert(self, value):
-        for f in self.hashFunc:
+        for f in self.hashfunction:
             loc = f.hash(value)
             self.bitset[loc] = 1
-    def isContaions(self, value):
+    def lookup(self, value):
         if value == None:
             return False
         ret = True
-        for f in self.hashFunc:
+        for f in self.hashfunction:
             loc = f.hash(value)
             ret = ret & self.bitset[loc]
         return ret
@@ -48,10 +48,10 @@ def main():
             url = a.__next__()
         except StopIteration:
             break
-        if bloomfilter.isContaions(url) == False:
+        if bloomfilter.lookup(url) == False:
             bloomfilter.insert(url)
-            print('url :%s insert' % url)
+            print('%s has not exist and insert' % url)
         else:
-            print ('url :%s has exist' % url )
+            print ('%s has exist' % url )
             
 main()
