@@ -29,6 +29,27 @@ class Sorting_Algorithm():
             self.sorting_list.pop(i+1)
         return self.sorting_list
 
-            
-c=[2,3,5,1,3,6,5,7,2,9,4]
-a=Sorting_Algorithm(c)
+    def shell_sort(self):
+        dist=len(self.sorting_list)//2
+        while dist>0:
+            for i in range(dist,len(self.sorting_list)):
+                tmp=self.sorting_list[i]
+                j=i
+                while j>=dist and tmp<self.sorting_list[j-dist]:
+                    self.sorting_list[j]=self.sorting_list[j-dist]
+                    j-=dist
+                    self.sorting_list[j]=tmp
+            dist//=2
+        return self.sorting_list
+    
+    def quick_sort(self):
+        if len(self.sorting_list) <= 1:
+            return self.sorting_list
+        else:
+            p = self.sorting_list[0]
+            return Sorting_Algorithm([x for x in self.sorting_list[1:] if x < p]).quick_sort() + [p] + Sorting_Algorithm([x for x in self.sorting_list[1:] if x >= p]).quick_sort()
+
+if __name__=='__main__':
+	c=[2,3,5,1,3,6,5]
+	a=Sorting_Algorithm(c)
+	print(a.quick_sort())
