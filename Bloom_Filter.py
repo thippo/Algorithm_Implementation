@@ -31,7 +31,7 @@ class BloomFilter():
         for f in self.hashfunction:
             loc = f.hash(value)
             self.bitset[loc] = 1
-			
+
     def lookup(self, value):
         if value == None:
             return False
@@ -46,13 +46,13 @@ def main():
     bloomfilter = BloomFilter(bit_size=10,hash_count=5)
     while True:
         try:
-            url = a.__next__()
+            element = a.__next__()
         except StopIteration:
             break
-        if bloomfilter.lookup(url) == False:
-            bloomfilter.insert(url)
-            print('%s has not exist and insert' % url)
+        if bloomfilter.lookup(element) == False:
+            bloomfilter.insert(element)
+            print('%s has not exist and insert' % element)
         else:
-            print ('%s has exist' % url )
+            print ('%s has exist' % element )
             
 main()
