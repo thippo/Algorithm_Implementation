@@ -12,7 +12,7 @@ class BloomFilter():
             self.cap = cap
             self.seed = seed
 
-        def hash(self, value):
+        def __call__(self, value):
             ret = 0
             for i in range(len(value)):
                 ret += self.seed*ret + ord(value[i])
@@ -29,7 +29,7 @@ class BloomFilter():
    
     def insert(self, value):
         for f in self.hashfunction:
-            loc = f.hash(value)
+            loc = f(value)
             self.bitset[loc] = 1
 
     def lookup(self, value):
@@ -37,7 +37,7 @@ class BloomFilter():
             return False
         ret = True
         for f in self.hashfunction:
-            loc = f.hash(value)
+            loc = f(value)
             ret = ret & self.bitset[loc]
         return ret
 
