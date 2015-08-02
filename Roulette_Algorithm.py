@@ -13,11 +13,11 @@ class Roulette_Algorithm():
     def __call__(self):
         (t, i) = (self.np.random.random(), 0)
         for p in self.probability_array:
-            if p > t:
+            if p >= t:
                 break
             i = i + 1
         return self.value_array[i]
 
 if __name__=='__main__':
-    a=Roulette_Algorithm([3,6,8,11,20])
+    a=Roulette_Algorithm([3])
     print(a())
