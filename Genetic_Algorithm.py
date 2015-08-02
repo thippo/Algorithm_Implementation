@@ -28,12 +28,6 @@ class Genetic_Algorithm():
     def decode(self,chromosome):
         n =  2 ** self.chromosome_size -1
         return (self.interval[0] + int(chromosome,2) * (self.interval[1]-self.interval[0]) / n)
-    
-    def xxx(self):
-        a=self.np.array([self.fitness_function(self.decode(x)) for x in self.population_list])
-        b=a/a.sum()
-        c=b.cumsum()
-        return c
 
     def roulette(self):
         a=self.np.array([self.fitness_function(self.decode(x)) for x in self.population_list])
