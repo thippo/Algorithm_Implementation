@@ -58,14 +58,13 @@ class Genetic_Algorithm():
     
     def evolution(self,reproduce_generation=50):
         print(str(0)+'/'+str(reproduce_generation)+'   ',end='')
-        offspring_list=[self.population_list[self.np.array([self.fitness_function(self.decode(x)) for x in self.population_list]).argmax()]]
+        offspring_list=[]
         print('best: ',self.np.array([self.fitness_function(self.decode(x)) for x in self.population_list]).max())
         for i in range(reproduce_generation):
             offspring_list.append(self.population_list[self.np.array([self.fitness_function(self.decode(x)) for x in self.population_list]).argmax()])
             for j in range(self.population_size-1):
                 chromosome_cross=self.random.sample(self.population_list,2)
-                offspring_list.append(self.cross_recombination(chromosome_cross[0],chromosome_cross[1])[0])
-                offspring_list.append(self.cross_recombination(chromosome_cross[0],chromosome_cross[1])[1])
+                offspring_list.append(self.cross_recombination(chromosome_cross[0],chromosome_cross[1])[self.random.randint(0,1)])
             offspring_list=[self.mutate(x) for x in offspring_list]
             print(str(i+1)+'/'+str(reproduce_generation)+'   ',end='')
             print('best: ',self.np.array([self.fitness_function(self.decode(x)) for x in offspring_list]).max())
