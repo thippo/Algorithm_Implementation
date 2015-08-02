@@ -36,7 +36,7 @@ class Genetic_Algorithm():
             if p >= t:
                 break
             i = i + 1
-        return i
+        return self.population_list[i]
     
     def cross_recombination(self,chromosome1,chromosome2):
         p = self.random.random()
@@ -64,8 +64,7 @@ class Genetic_Algorithm():
         print('best: ',b.max())
         for i in range(reproduce_generation):
             for j in range(self.population_size-1):
-                chromosome_cross=self.random.sample(self.population_list,2)
-                offspring_list.append(self.cross_recombination(chromosome_cross[0],chromosome_cross[1])[self.random.randint(0,1)])
+                offspring_list.append(self.cross_recombination(self.roulette(),self.roulette())[self.random.randint(0,1)])
             offspring_list=[self.mutate(x) for x in offspring_list]
             a=self.np.array(offspring_list)
             b=self.np.array([self.fitness_function(self.decode(x)) for x in a])
