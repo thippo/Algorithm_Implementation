@@ -50,10 +50,10 @@ class Sorting_Algorithm():
             return Sorting_Algorithm([x for x in self.sorting_list[1:] if x < p]).quick_sort() + [p] + Sorting_Algorithm([x for x in self.sorting_list[1:] if x >= p]).quick_sort()
 
     def select_sort(self):
-        count=len(self.sorting_list)
-        for i in range(count):
+        list_length=len(self.sorting_list)
+        for i in range(list_length):
             min=i
-            for j in range(i+1,count):
+            for j in range(i+1,list_length):
                 if self.sorting_list[min]>self.sorting_list[j]:
                     min=j
             self.sorting_list[min],self.sorting_list[i]=self.sorting_list[i],self.sorting_list[min]
