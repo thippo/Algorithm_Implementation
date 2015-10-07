@@ -49,7 +49,17 @@ class Sorting_Algorithm():
             p = self.sorting_list[0]
             return Sorting_Algorithm([x for x in self.sorting_list[1:] if x < p]).quick_sort() + [p] + Sorting_Algorithm([x for x in self.sorting_list[1:] if x >= p]).quick_sort()
 
+    def select_sort(self):
+        count=len(self.sorting_list)
+        for i in range(count):
+            min=i
+            for j in range(i+1,count):
+                if self.sorting_list[min]>self.sorting_list[j]:
+                    min=j
+            self.sorting_list[min],self.sorting_list[i]=self.sorting_list[i],self.sorting_list[min]
+        return self.sorting_list
+
 if __name__=='__main__':
 	c=[2,3,5,1,3,6,5]
 	a=Sorting_Algorithm(c)
-	print(a.quick_sort())
+	print(a.select_sort())
